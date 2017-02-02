@@ -18,14 +18,13 @@ enum ShapeType {
     ///Defines the possible colors of the confetti
     var possibleColors:[UIColor] {
         get {
-            return [#colorLiteral(red: 0, green: 0.4443781972, blue: 0.8679092526, alpha: 1),#colorLiteral(red: 0.5667363405, green: 0.8658216596, blue: 0.4901404977, alpha: 1),#colorLiteral(red: 1, green: 0.9203848839, blue: 0.331726253, alpha: 1),#colorLiteral(red: 0.9978461862, green: 0.3002898395, blue: 0.2846045196, alpha: 1),#colorLiteral(red: 0.7954284549, green: 0.3837707639, blue: 0.7679683566, alpha: 1)]
+            return [#colorLiteral(red: 0.7921568627, green: 0, blue: 0.1019607843, alpha: 1),#colorLiteral(red: 0.8392156863, green: 0.2470588235, blue: 0.2666666667, alpha: 1),#colorLiteral(red: 0.9764705882, green: 0.4470588235, blue: 0.5058823529, alpha: 1),#colorLiteral(red: 0.9568627451, green: 0.3764705882, blue: 0.1254901961, alpha: 1)]
         }
     }
     
     case circle
     case triangle
     case square
-    case squigle
     
     
     /**
@@ -58,18 +57,6 @@ enum ShapeType {
                 color.setFill()
                 path.fill()
             }
-        case .squigle:
-            return { rect,color in
-                let path = UIBezierPath()
-                path.move(to: CGPoint(x:5, y: 5))
-                path.addCurve(to: CGPoint(x:rect.size.width-5,y:rect.size.width-5),
-                              controlPoint1: CGPoint(x:0,y:rect.size.width),
-                              controlPoint2: CGPoint(x:rect.size.width,y:0))
-                path.lineWidth = 2.0
-                color.setStroke()
-                path.stroke()
-            }
-        }
     }
     
     /// Returns a random color
@@ -79,7 +66,7 @@ enum ShapeType {
     
     /// Returns a randum ShapeType
     static func random()-> ShapeType {
-        return [ShapeType.circle,ShapeType.square,.triangle,.squigle].randomElement()!
+        return [ShapeType.circle,ShapeType.square,.triangle].randomElement()!
     }
 }
 
