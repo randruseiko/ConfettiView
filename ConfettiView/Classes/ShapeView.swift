@@ -57,6 +57,7 @@ enum ShapeType {
                 color.setFill()
                 path.fill()
             }
+        }
     }
     
     /// Returns a random color
