@@ -43,6 +43,7 @@ class ConfettiLayer {
      */
     init(view aView:UIView, depth aDepth:Double = 1.0) {
         view = aView
+        view.backgroundColor = UIColor.clear
         animator = UIDynamicAnimator(referenceView: view)
         calculatedVelocity = baseVelocity
         depth = aDepth
