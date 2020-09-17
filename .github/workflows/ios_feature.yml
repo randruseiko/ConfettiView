@@ -1,0 +1,35 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - develop
+  pull_request:
+    branches:
+      - develop
+
+jobs:
+  build:
+
+    runs-on: macos-latest
+    strategy:
+      matrix:
+        destination: ['platform=iOS Simulator,OS=13.7,name=iPhone X']
+    steps:
+    # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: Set XCode Version
+      run: sudo xcode-select -s /Applications/Xcode_11.7.app
+
+    # Runs a single command using the runners shell
+    - name: Install Dependencies
+      run: |
+        cd Mobile.IOS
+        pod install --repo-update
+      shell: bash      
+    - name: Build
+      run: swift build -v
+    - name: Run tests
+      run: swift test -v
